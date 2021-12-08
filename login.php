@@ -2,7 +2,7 @@
 
 require_once "config.php";
 session_start();
-
+$error= "";
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
     
@@ -11,10 +11,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
     $result = mysqli_query($link,$sql) or die (mysqli_error($link));
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //$active = $row['active'];
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['row'] = $row;
     $count = mysqli_num_rows($result);
-      
+
+    $sql_nombre = "SELECT nombre FROM users WHERE username = '$myusername' and password = '$mypassword'";
+    $nombre_row = mysqli_query($link, $sql_nombre) or die (mysqli_error($link));
+    $nombre_sesion = mysqli_fetch_assoc($nombre_row);
+    $_SESSION['nombre_user'] = $nombre_sesion;
+
+    $sql_apellido = "SELECT apellido FROM users WHERE username = '$myusername' and password = '$mypassword'";
+    $apellido_row = mysqli_query($link, $sql_apellido) or die (mysqli_error($link));
+    $apellido_sesion = mysqli_fetch_assoc($apellido_row);
+    $_SESSION['apellido_user'] = $apellido_sesion;  
+    
     if($count == 1) {
         header("location: welcomepaciente.php");
     }else {
