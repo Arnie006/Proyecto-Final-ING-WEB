@@ -37,9 +37,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<label for="contrasena">Contraseña</label><br>
 	<input style="text-align: center" type="password" name="password" required><br><br><br>
 	<input style="font-size:15px; background-color: transparent; color:#78d9ff; border:none; cursor:pointer; font-weight: bold" type="submit" value="Ingresar">
+    <br>Para pacientes: <a href="login.php">Login Pacientes</a>
 </form>
-<p>
-		Para pacientes: <a href="login_medicos.php">Login Pacientes</a>
-</p>
+
 </body>
 </html>
