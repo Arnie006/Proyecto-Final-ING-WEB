@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if($count == 1) {
         header("location: welcomepaciente.php");
     }else {
-       $error = "Login Invalido";
+       $error = "*Cédula o contraseña incorrectos. Por favor verifique sus datos e intente nuevamente";
     }
  }
 ?>
@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <h1 style="text-shadow: 3px 2px #000000"><img src="logo1.png" width="100" height="100" align="center" style="margin-right: 20px">SISTEMA ELECTRÓNICO DE CITAS</h1>
 <form style="font-size:11px; margin-top: 60px; text-align: center" action="#" method="POST">
-	<?php echo $error;?><br>
+	<p><?php echo $error;?><br></p>
     <label for="nombre">Usuario</label><br>
 	<input style="text-align: center" type="text" name="user" required><br><br>
 	<label for="contrasena">Contraseña</label><br>

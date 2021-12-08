@@ -38,6 +38,7 @@ if (isset($_POST['reg_user'])){
 </head>
 <body>
 <h1><img src="logo1.png" width="100" height="100" align="center" style="margin-right: 20px">SISTEMA ELECTRÓNICO DE CITAS</h1><br>
+<a href="pfcontacto.html" style="bottom:0; right:0; right:0; text-align:right; font-size:12px">Contáctenos</a>
 <p style="font-size:25px; text-align: center">¡Bienvenido!<br>Por favor llene los campos para registrarse</p><br>
 <table align="center">
 <tr>
