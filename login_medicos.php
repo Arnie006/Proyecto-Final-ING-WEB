@@ -13,15 +13,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
     $count = mysqli_num_rows($result);
     
-    $sql_nombre = "SELECT nombre FROM medicos WHERE username = '$myusername' and password = '$mypassword'";
+    $sql_nombre = "SELECT nombre_medico FROM medicos WHERE username = '$myusername' and password = '$mypassword'";
     $nombre_row = mysqli_query($link, $sql_nombre) or die (mysqli_error($link));
     $nombre_sesion = mysqli_fetch_assoc($nombre_row);
     $_SESSION['nombre_user'] = $nombre_sesion;
 
-    $sql_apellido = "SELECT apellido FROM medicos WHERE username = '$myusername' and password = '$mypassword'";
-    $apellido_row = mysqli_query($link, $sql_apellido) or die (mysqli_error($link));
-    $apellido_sesion = mysqli_fetch_assoc($apellido_row);
-    $_SESSION['apellido_user'] = $apellido_sesion;  
       
     if($count == 1) {
         header("location: welcome.php");
