@@ -7,12 +7,15 @@ $username = "";
 $nombre   = "";
 $apellido = "";
 $password = "";
+$tel      = "";
+$email   = "";
 if (isset($_POST['reg_user'])){
     $username =  mysqli_real_escape_string($link,$_POST['username']);
     $nombre = mysqli_real_escape_string($link,$_POST['nombre']);
     $apellido = mysqli_real_escape_string($link,$_POST['apellido']);
     $password = mysqli_real_escape_string($link,$_POST['password']);    
-
+    $correo = mysqli_real_escape_string($link,$_POST['email']);
+    $tel = mysqli_real_escape_string($link,$_POST['tel']);  
 
     $user_check_query = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($link, $user_check_query);
@@ -21,7 +24,7 @@ if (isset($_POST['reg_user'])){
     if ($user['username'] === $username) {
         echo "Usuario existente";
         }else{
-            $sql_registro = "insert into users (username, password, nombre, apellido) values ( '$username', '$password', '$nombre', '$apellido');";
+            $sql_registro = "insert into users (username, password, nombre, apellido, correo, telefono) values ( '$username', '$password', '$nombre', '$apellido', '$email', '$tel');";
             mysqli_query($link, $sql_registro);
             header('location: login.php');
         }
@@ -48,6 +51,10 @@ if (isset($_POST['reg_user'])){
 	<input type="text" name="nombre"  value="<?php echo $nombre; ?>"><br><br>
 	<label for="apellido">Apellido</label><br>
 	<input type="text" name="apellido"  value="<?php echo $apellido; ?>"><br><br>
+    <label for="password">Correo electrónico</label><br>
+	<input type="text" name="email" required  value="<?php echo $email; ?>"><br><br>
+	<label for="password">No. Telefónico (Escribalo sin -)</label><br>
+	<input type="tel" name="tel" required  value="<?php echo $tel; ?>"><br><br>
 	<label for="username">No. de Cédula</label><br>
 	<input type="text" name="username" required  value="<?php echo $username; ?>"><br><br>
 	<label for="password">Contraseña</label><br>

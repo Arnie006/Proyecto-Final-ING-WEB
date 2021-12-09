@@ -11,6 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT id FROM medicos WHERE username = '$myusername' and password = '$mypassword'";
     $result = mysqli_query($link,$sql) or die (mysqli_error($link));
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $_SESSION['row'] = $row;
     $count = mysqli_num_rows($result);
     
     $sql_nombre = "SELECT nombre_medico FROM medicos WHERE username = '$myusername' and password = '$mypassword'";

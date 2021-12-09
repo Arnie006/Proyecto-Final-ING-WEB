@@ -1,13 +1,23 @@
 <?php
 require_once "config.php";
 session_start();
-$usuario = $_SESSION['row']['id'];
-$sql_show = "select * from (select prueba_citas.id, prueba_citas.fecha, prueba_citas.id_paciente, medicos.nombre_medico, complejos.nombre_complejos, especialidad.nombre_especialidad from (((medicos inner join prueba_citas on prueba_citas.id_medico = medicos.id) inner join complejos on medicos.id_complejo=complejos.id) inner join especialidad on medicos.id_especialidad=especialidad.id)) as T where id_paciente = 10; 
-";
+
+if (isset($_SESSION['username']))
+{                     
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
+$usuario = $_SESSION['row']['id_users'];
+$sql_show = "select * from (select prueba_citas.id_citas, prueba_citas.fecha, prueba_citas.id_paciente, medicos.nombre_medico, complejos.nombre_complejos, especialidad.nombre_especialidad from (((medicos inner join prueba_citas on prueba_citas.id_medico = medicos.id) inner join complejos on medicos.id_complejo=complejos.id) inner join especialidad on medicos.id_especialidad=especialidad.id)) as T where id_paciente = 
+".$usuario;
 $mostrar_citas = mysqli_query($link, $sql_show);
 
+
 while($row = mysqli_fetch_array($mostrar_citas)){
-    echo $row['id'];
+    echo $row['id_citas'];
     echo "<br>";
     echo $row['fecha'];
     echo "<br>";
@@ -15,7 +25,7 @@ while($row = mysqli_fetch_array($mostrar_citas)){
     ?>
     <form method="POST" onsubmit="return confirm('Esta seguro que desea eliminar?');">
     <input type="hidden" name="_METHOD" value="DELETE">
-    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+    <input type="hidden" name="id" value="<?php echo $row['id_citas']; ?>">
     <button type="submit">Delete Case</button>
     </form>
     <?php

@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($link,$_POST['user']);
     $mypassword = mysqli_real_escape_string($link,$_POST['password']); 
     
-    $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
+    $sql = "SELECT id_users FROM users WHERE username = '$myusername' and password = '$mypassword'";
     $result = mysqli_query($link,$sql) or die (mysqli_error($link));
     $row = mysqli_fetch_assoc($result);
     $_SESSION['row'] = $row;

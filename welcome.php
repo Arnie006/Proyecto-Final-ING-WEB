@@ -12,3 +12,4 @@ if (isset($_SESSION['username']))
 <!DOCTYPE html>
 <p>Holi, doc</p>
 <p><a href="logout.php">Salir</a>.</p>
+<p><a href="verificarcitas.php">Citas</a>.</p>
