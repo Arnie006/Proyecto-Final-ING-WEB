@@ -1,6 +1,6 @@
 <?php session_start()?>
 <?php
-if (!isset($_SESSION['nombre_user']) /* or something like that */)
+if (!isset($_SESSION['nombre_user']))
 {                     
     session_unset();
     session_destroy();
