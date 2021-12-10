@@ -2,7 +2,7 @@
 session_start();
 
 include "config.php";
-
+//inicializa las variables
 $username = "";
 $nombre   = "";
 $apellido = "";
@@ -10,13 +10,15 @@ $password = "";
 $tel      = "";
 $email   = "";
 if (isset($_POST['reg_user'])){
+    //convierte en datos usables por sql
     $username =  mysqli_real_escape_string($link,$_POST['username']);
     $nombre = mysqli_real_escape_string($link,$_POST['nombre']);
     $apellido = mysqli_real_escape_string($link,$_POST['apellido']);
     $password = mysqli_real_escape_string($link,$_POST['password']);    
-    $correo = mysqli_real_escape_string($link,$_POST['email']);
+    $email = mysqli_real_escape_string($link,$_POST['email']);
     $tel = mysqli_real_escape_string($link,$_POST['tel']);  
 
+    //query para revisar si el usuario existe en el sistema
     $user_check_query = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($link, $user_check_query);
     $user = mysqli_fetch_assoc($result);    
@@ -51,7 +53,7 @@ if (isset($_POST['reg_user'])){
 	<input type="text" name="nombre"  value="<?php echo $nombre; ?>"><br><br>
 	<label for="apellido">Apellido</label><br>
 	<input type="text" name="apellido"  value="<?php echo $apellido; ?>"><br><br>
-    <label for="password">Correo electrónico</label><br>
+    <label for="email">Correo electrónico</label><br>
 	<input type="text" name="email" required  value="<?php echo $email; ?>"><br><br>
 	<label for="password">No. Telefónico (Escribalo sin -)</label><br>
 	<input type="tel" name="tel" required  value="<?php echo $tel; ?>"><br><br>

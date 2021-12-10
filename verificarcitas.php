@@ -2,6 +2,7 @@
 require_once "config.php";
 session_start();
 
+//revisa si la sesion esta iniciada y evita que el usuario acceda a las paginas escribiendo el nombre del archivo en la barra
 if (isset($_SESSION['username']))
 {                     
     session_unset();
