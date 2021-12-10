@@ -44,7 +44,6 @@ if (isset($_POST['ingresar_cita'])){
 
 
 ?>
-?>
 
 <!DOCTYPE html>
 <html lang="en">
