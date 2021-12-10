@@ -53,11 +53,12 @@ if (!isset($_SESSION['nombre_user']))
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
             </div>
         </section>
-    <form method = "post" action="">
+
 
         <section class="hora_cita_sistema">
             <div class="hora_cita">
                 <p>Escoja el Centro Medico de su Preferencia:</p>
+
                 <form action="Reservar_Cita_PoliclinicaJJVallarino.php">
                     <button type="submit" class="btn_1">
                         Policlínica J.J. Vallarino
@@ -91,7 +92,7 @@ if (!isset($_SESSION['nombre_user']))
                 
             </div>
         </section>
-    </form>
+ 
         <section class="cuerpo2">
             <div class="mas-detalles2">
                 <p>No. de Seguro Social:</p>
