@@ -9,6 +9,7 @@ $apellido = "";
 $password = "";
 $tel      = "";
 $email   = "";
+$error = "";
 if (isset($_POST['reg_user'])){
     //convierte en datos usables por sql
     $username =  mysqli_real_escape_string($link,$_POST['username']);
@@ -24,7 +25,7 @@ if (isset($_POST['reg_user'])){
     $user = mysqli_fetch_assoc($result);    
     
     if ($user['username'] === $username) {
-        echo "Usuario existente";
+        $error = "Usuario existente";
         }else{
             $sql_registro = "insert into users (username, password, nombre, apellido, correo, telefono) values ( '$username', '$password', '$nombre', '$apellido', '$email', '$tel');";
             mysqli_query($link, $sql_registro);
@@ -56,7 +57,8 @@ if (isset($_POST['reg_user'])){
     <label for="email">Correo electrónico</label><br>
 	<input type="text" name="email" required  value="<?php echo $email; ?>"><br><br>
 	<label for="password">No. Telefónico (Escribalo sin -)</label><br>
-	<input type="tel" name="tel" required  value="<?php echo $tel; ?>"><br><br>
+	<input type="tel" name="tel" required  value="<?php echo $tel; ?>"><br><p>
+    <?php echo $error;?></p><br>    
 	<label for="username">No. de Cédula</label><br>
 	<input type="text" name="username" required  value="<?php echo $username; ?>"><br><br>
 	<label for="password">Contraseña</label><br>

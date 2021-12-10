@@ -35,7 +35,7 @@ if (isset($_POST['ingresar_cita'])){
         //TODO añadir esta variable a la pantalla principal
         $success = 'Ha añadido correctamente su cita!';
         $_SESSION['success'] = $success;
-        header("location: seleccion_clinica.php");
+        header("location: confirmacion.php");
     
     }
     
@@ -82,9 +82,9 @@ if (isset($_POST['ingresar_cita'])){
         </section>
         <section class="menu_sistema">
             <div class="div_menu_sistema">
-                <h3><a class="btn_reservarcitahover" href="#"><font color="#2ECC71">Reservar Citas</font></a></h3>
-                <h3><a class="btn_reservarcitahover" href="#">Citas Recientes</a></h3>
-                <h3><a class="btn_reservarcitahover" href="#">Contáctenos</a></h3>
+                <h3><a class="btn_reservarcitahover" href="#"><font color="#3498DB">Reservar Citas</font></a></h3>
+                <h3><a class="btn_reservarcitahover" href="citasrecientes.php">Citas Recientes</a></h3>
+                <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
             </div>
         </section>
         <section class="nombre_hospital_sistema">
@@ -93,7 +93,7 @@ if (isset($_POST['ingresar_cita'])){
             </div>
         </section>
         <?php echo $doctor?>
-    <form method = "post" action="Reservar_Cita_PoliclinicaJJBallarino.php">
+    <form method = "post" action="Reservar_Cita_PoliclinicaCarlosNBrin.php">
         <section class="menu_fecha_sistema">
             <div class="menu_fecha">
                 <label for="fecha">Fecha:</label>
@@ -173,7 +173,7 @@ if (isset($_POST['ingresar_cita'])){
         
         <section>
             <div class="ir_atras">
-                <img class="botonatras" src="icono_salir.png" alt="">
+                <a href="Escoger_Centro_Hospitalario.php"><img class="botonatras" src="icono_salir.png" alt=""></a>
                 <p class="texto_salir">Salir</p>
             </div>
         </section>
