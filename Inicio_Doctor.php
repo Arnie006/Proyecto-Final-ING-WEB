@@ -1,3 +1,29 @@
+<?php 
+include "config.php";
+
+session_start()?>
+<?php
+if (isset($_SESSION['username']))
+{                     
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
+$fecha = "";
+
+
+
+
+if (isset($_POST['boton_enviar'])){
+    $fecha = mysqli_real_escape_string($link,$_POST['fecha']);
+    $_SESSION['fecha'] = $fecha ?? "";
+    header("location: Citas_Recientes_Medico.php");
+    //VerificarPorDia();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +57,7 @@
         <section class="cuerpo">
             <div class="mas-detalles">
                 <img class="user_info" src="usuario.png" alt="">
-                <h2>Buen dia, <?php echo implode(', ', $_SESSION['nombre_user']); echo ' '; echo implode(', ', $_SESSION['apellido_user']); ?></h2>
+                <h2>Buen dia, <?php echo implode(', ', $_SESSION['nombre_user']);?></h2>
             </div>
         </section>
         <section class="menu_sistema">
@@ -52,24 +78,24 @@
                 <label for="fecha">Fecha:</label>
                 <input type="date" id="fecha" name="fecha"
                     value="<?php echo $fecha; ?>"
-                    min="2021-08-12" max="2022-08-12">
+                    min="2021-08-12" max="2022-08-12" required>
             </div>
         </section>
         
         
-    </form>
+
 
 
         <section class="cuerpo2">
             <div class="mas-detalles2">
                 <p>No. de Seguro Social:</p>
-                <p><?php echo $_SESSION['cedula'];?></p>
+                <p><?php //echo $_SESSION['cedula'];?></p>
                 <hr>
                 <p>Correo Electrónico:</p>
-                <p><?php echo implode(', ', $_SESSION['correo_user']);?></p>
+                <p><?php //echo implode(', ', $_SESSION['correo_user']);?></p>
                 <hr>
                 <p>Teléfono:</p>
-                <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
+                <p><?php //echo implode(', ', $_SESSION['telefono_user']);?></p>
                 <hr>
             </div>
         </section>
@@ -81,14 +107,14 @@
                 <p class="texto_salir">Salir</p>
             </div>
             <div class="boton_enviar">
-                <button name="subject" type="submit" value="HTML" class="btn_enviar">Enviar</button>
+                <input name="boton_enviar" type="submit" class="btn_enviar">Enviar</button>
             </div>
             <div class="boton_ver">
                 <button name="boton" type="submit" value="HTML" class="btn_ver">Ver Citas</button>
             </div>
         </section>
         
-        
+        </form>    
         
         
     </main>
