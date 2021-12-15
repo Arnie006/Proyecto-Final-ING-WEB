@@ -87,6 +87,7 @@ nav ul{
     height: 139px;
     align-self: center;
     align-items: center;
+    margin-bottom: -475px;
 }
 
 .cuerpo2{
@@ -96,8 +97,19 @@ nav ul{
     width: 600px;
     align-self: center;
     align-items: center;
+    margin-bottom: -158px;
+}
+
+.cuerpo3{
+    display: grid;
+    padding: 30px;
+    padding-left: 48px;
+    width: 696px;
+    align-self: center;
+    align-items: center;
     position: relative;
-    top: -560px;
+    top: -100px;
+    left: 672px;
 }
 
 .mas-detalles{
@@ -109,7 +121,11 @@ nav ul{
 .mas-detalles2{
     background-color: rgb(188, 189, 192); 
     box-shadow: 0 0 20px 0 rgba(39, 38, 38, 0.281), 0 5px 5px 0 rgba(0, 0, 0, 0.377);
-    padding-bottom: 40px;
+}
+
+.mas-detalles3{
+    background-color: rgb(225, 240, 255); 
+    box-shadow: 0 0 20px 0 rgba(39, 38, 38, 0.281), 0 5px 5px 0 rgba(0, 0, 0, 0.377);
 }
 
 .mas-detalles2 h2, .mas-detalles2 p {
@@ -119,7 +135,23 @@ nav ul{
     margin-left: 27px;
 }
 
+
 .mas-detalles2 p{
+    text-align: justify;
+    color: black;
+    padding-bottom: 0px;
+    margin-right: 20px;
+    display: inline-flex;
+}
+
+.mas-detalles3 h2, .mas-detalles3 p {
+    margin: 20px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-left: 27px;
+}
+
+.mas-detalles3 p{
     text-align: justify;
     color: black;
     padding-bottom: 0px;
@@ -161,10 +193,7 @@ main h2{
 }
 
 .ir_atras{
-    display: inline-flex;
-    margin-bottom: 0px;
-    position: relative;
-    top: -600px;
+    display: -webkit-box;
 }
 
 .menu_sistema {
@@ -177,7 +206,7 @@ main h2{
     color: white;
     width: 16%;
     position: relative;
-    top: -115px;
+    top: 380px;
     left: 700px;
     text-decoration: underline;
     text-shadow: 8px 8px 12px black;
@@ -214,8 +243,8 @@ label {
     color: white;
     width: 16%;
     position: relative;
-    top: -142px;
-    left: 690px;
+    top: 649px;
+    left: 700px;
 }
 
 
@@ -229,8 +258,8 @@ label {
     color: white;
     width: 16%;
     position: relative;
-    top: -166px;
-    left: 690px;
+    top: 633px;
+    left: 700px;
     font-size: medium;
 }
 
@@ -483,9 +512,32 @@ label {
     color: white;
     width: 16%;
     position: relative;
-    top: -100px;
-    left: 693px;
+    top: 0px;
+    left: 700px;
     font-size: medium;
+}
+
+.boton_editar{
+    float: left;
+    padding: 20px;
+    color: white;
+    width: 16%;
+    position: relative;
+    top: -382px;
+    left: 1210px;
+    font-size: medium;
+    display: flex;
+}
+
+.edit{
+    padding-right: 20px;
+    text-decoration: underline;
+    color: rgb(49, 152, 255);
+}
+
+.delet{
+    text-decoration: underline;
+    color: red;
 }
 
 .btn_enviar{
@@ -495,7 +547,7 @@ label {
     border-radius: 4%;
     border-color: white;
     position: relative;
-    top: -34px;
+    top: -75px;
     left: 0px;
     text-decoration: underline;
 }
@@ -519,10 +571,10 @@ label {
     color: white;
     width: 50%;
     position: relative;
-    top: -134px;
+    top: 350px;
     left: 693px;
     font-size: x-large;
     text-transform: uppercase;
-    color: rgb(142, 188, 234);
+    color: white;
 }
 

@@ -10,11 +10,18 @@ if (!isset($_SESSION['nombre_user']))
 }
 $success = "";
 $fecha ="";
-$doctor = "";
 $hora = "";
+$date = "";
 $error = "";
 $id = $_SESSION['row']['id_users'];
 $correo = $_SESSION['correo_user']['correo'];
+$id_cita = $_SESSION['id_citas'];
+
+
+$sql_show = "select * from (select prueba_citas.id_citas, prueba_citas.fecha, prueba_citas.id_paciente, medicos.nombre_medico, complejos.nombre_complejos, especialidad.nombre_especialidad, prueba_citas.motivo from (((medicos inner join prueba_citas on prueba_citas.id_medico = medicos.id) inner join complejos on medicos.id_complejo=complejos.id) inner join especialidad on medicos.id_especialidad=especialidad.id)) as T where id_citas =
+".$id_cita;
+$mostrar_citas = mysqli_query($link, $sql_show) or die (mysqli_error($link));
+$row = mysqli_fetch_array($mostrar_citas);
 
 if (isset($_POST['ingresar_cita'])){
     $doctor = mysqli_real_escape_string($link,$_POST['doctor']);
@@ -26,10 +33,13 @@ if (isset($_POST['ingresar_cita'])){
     $result = mysqli_query($link, $cita_check_query) or die (mysqli_error($link));
     $cita = mysqli_fetch_assoc($result);  
 
+
+
+
     if ($cita['fecha'] === $date){
         $error = "El doctor ya tiene una cita para el horario seleccionado";
     }else{
-        $addcita_sql = "insert into prueba_citas (fecha, id_paciente, correo_paciente, id_medico) values ('$date', '$id', '$correo', '$doctor');"; 
+        $addcita_sql = "UPDATE prueba_citas set fecha = $date where id_citas =".id_cita; 
         $query = mysqli_query($link, $addcita_sql);
 
         //TODO añadir esta variable a la pantalla principal
@@ -45,15 +55,16 @@ if (isset($_POST['ingresar_cita'])){
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar Citas</title>
+    <title>Editar Cita</title>
 
-    <link rel="stylesheet" href="Reservar_Cita_ComplejoHospitalarioArnulfoAM.css">
+    <link rel="stylesheet" href="Editar_Cita.css">
     <link rel="shortcut icon" href="logo_css.png" type="image/x-icon">
 </head>
 
@@ -82,25 +93,25 @@ if (isset($_POST['ingresar_cita'])){
             </div>
         </section>
         <section class="menu_sistema">
-        <div class="div_menu_sistema">
-                <h3><a class="btn_reservarcitahover" href="Escoger_Centro_Hospitalario.php"><font color="#3498DB">Reservar Citas</font></a></h3>
-                <h3><a class="btn_reservarcitahover" href="citasrecientes.php">Citas Recientes</a></h3>
+            <div class="div_menu_sistema">
+                <h3><a class="btn_reservarcitahover" href="Escoger_Centro_Hospitalario.php">Reservar Citas</a></h3>
+                <h3><a class="btn_reservarcitahover" href=""><font color="#2ECC71">Citas Recientes</font></a></h3>
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
             </div>
         </section>
         <section class="nombre_hospital_sistema">
             <div class="nombre_hospital">
-                <h3>Complejo Hospitalario Arnulfo Arias Madrid</h3>
+                <h3>Editar Citas</h3>
             </div>
         </section>
-        <?php echo $doctor?>
-    <form method = "post" action="Reservar_Cita_ComplejoHospitalarioArnulfoAM.php">
+    <form method = "post" action="Editar_Cita.php">
+        
         <section class="menu_fecha_sistema">
             <div class="menu_fecha">
-                <label for="fecha">Fecha:</label>
+                <label for="fechita">Fecha:</label>
                 <input type="date" id="fecha" name="fecha"
                     value="<?php echo $fecha; ?>"
-                    min="2021-08-12" max="2022-08-12">
+                    min="2021-08-12" max="2022-08-12" method = "POST">
             </div>
         </section>
         <section class="hora_cita_sistema">
@@ -128,36 +139,13 @@ if (isset($_POST['ingresar_cita'])){
                     <option value = " 17:00:00">17:00 - 17:30</option> 
                 </select>
             </div>
-        </section>
-        <section class="especialidad_medico_sistema">
-            <div class="especialidad_medico">
-                <p>Médico:</p>
-                <select id = "doctor" name = "doctor" method = "post" name="Especialidades" class="selec_especialidad">
-                    <option value = "40">Jean Alvarez (Cardiología)</option> 
-                    <option value = "41">Gaspar Campos (Cardiología)</option> 
-                    <option value = "42">Rodrigo Moran (Oftalmología)</option>
-                    <option value = "43">Nathalie Ng (Oftalmología)</option> 
-                    <option value = "44">Valentina Aizpurua (Infectología)</option>  
-                    <option value = "45">Daniela Cantres (Infectología)</option> 
-                    <option value = "46">Alonso Plato (Neuropsicologiía)</option> 
-                    <option value = "47">Andres Urieta (Neuropsicologiía)</option>
-                    <option value = "48">Mike Chang (Pediatría)</option> 
-                    <option value = "49">Fherney Pardo (Pediatría)</option>  
-                 </select>
-            </div>
-        </section>
-        <section class="motivo_cita_sistema">
-            <div class="motivo_cita">
-                    <label for="motivocita">Motivo de la Cita:</label><br>
-                    <input type="text" id="motcita" name="motcita" class="modifmotcita" required>
-            </div>
-        </section>
-        <section class="boton_enviar_sistema">
-            <div class="boton_enviar">
-                <input type= "submit" name="ingresar_cita"  class="btn_enviar">
-            </div>
-        </section>
+
+        </section>  
+
+
     </form>
+
+
         <section class="cuerpo2">
             <div class="mas-detalles2">
                 <p>No. de Seguro Social:</p>
@@ -171,11 +159,58 @@ if (isset($_POST['ingresar_cita'])){
                 <hr>
             </div>
         </section>
+
+        <?php 
+//loop que muestra en pantalla la informacion conseguida en el query, y cicla por si hay mas de una linea de informacion
+//while()){
+    //echo $row['id_citas'];
+    //echo "<br>";
+    //echo $row['fecha'];
+    //echo "<br>";
+    //echo $row['nombre_medico'];
+    ?>
+
+        <section class="cuerpo3">
+            <div class="mas-detalles3">
+                <hr>
+                <p>Centro Médico:</p>
+                <p><?php echo $row['nombre_complejos'];?></p>
+                <hr>
+                <p>Fecha:</p>
+                <p><?php echo $row['fecha'];?></p>
+                <hr>
+                <p>Médico:</p>
+                <p><?php echo $row['nombre_medico'];?></p>
+                <hr>
+                <p>Motivo de Cita:</p>
+                <p><?php echo $row['motivo'];?></p>
+                <hr>
+                <form method="POST" onsubmit="return confirm('Esta seguro que desea eliminar?');">
+            
+                <input type="hidden" name="_METHOD" value="DELETE">
+                <input type="hidden" name="id" value="<?php echo $row['id_citas']; ?>">
+                <button class="delet" type="submit">Delete Case</button>
+                <hr>
+            
+            </div>
+
+        </section>
+
+        </form>
+        <?php
+        
+    //}
+    ?>
+
         
         <section>
             <div class="ir_atras">
-                <a href="Escoger_Centro_Hospitalario.php"><img class="botonatras" src="icono_salir.png" alt=""></a>
+                <img class="botonatras" src="icono_salir.png" alt="">
                 <p class="texto_salir">Salir</p>
+                <form method = "POST">
+                <div class="boton_enviar">
+                <input type= "submit" name="ingresar_cita"  class="btn_enviar">
+                </form>
             </div>
         </section>
         

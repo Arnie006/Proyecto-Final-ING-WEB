@@ -53,7 +53,7 @@ if (isset($_POST['ingresar_cita'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservar Citas</title>
 
-    <link rel="stylesheet" href="Reservar_Cita_ComplejoHospitalarioArnulfoAM.css">
+    <link rel="stylesheet" href="Reservar_Cita_PoliclinicaManuelFerrerValdes.css">
     <link rel="shortcut icon" href="logo_css.png" type="image/x-icon">
 </head>
 
@@ -82,19 +82,19 @@ if (isset($_POST['ingresar_cita'])){
             </div>
         </section>
         <section class="menu_sistema">
-        <div class="div_menu_sistema">
+            <div class="div_menu_sistema">
                 <h3><a class="btn_reservarcitahover" href="Escoger_Centro_Hospitalario.php"><font color="#3498DB">Reservar Citas</font></a></h3>
                 <h3><a class="btn_reservarcitahover" href="citasrecientes.php">Citas Recientes</a></h3>
-                <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
+                <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>    
             </div>
         </section>
         <section class="nombre_hospital_sistema">
             <div class="nombre_hospital">
-                <h3>Complejo Hospitalario Arnulfo Arias Madrid</h3>
+                <h3>Policlínica Manuel Ferrer Valdes</h3>
             </div>
         </section>
         <?php echo $doctor?>
-    <form method = "post" action="Reservar_Cita_ComplejoHospitalarioArnulfoAM.php">
+    <form method = "post" action="Reservar_Cita_PoliclinicaManuelFerrerValdes.php">
         <section class="menu_fecha_sistema">
             <div class="menu_fecha">
                 <label for="fecha">Fecha:</label>
@@ -106,7 +106,7 @@ if (isset($_POST['ingresar_cita'])){
         <section class="hora_cita_sistema">
             <div class="hora_cita">
                 <p>Horario de Atención:</p>
-                <select name="hora" id="hora" method = "post" name="hora" class="selec_hora">
+                <select name="hora" id="horadoctor" method = "post" name="eslahoradelahora" class="selec_hora">
                     <option value = " 07:00:00">7:00 - 7:30</option> 
                     <option value = " 07:30:00">7:30 - 8:00</option> 
                     <option value = " 08:00:00">8:00 - 8:30</option> 
@@ -133,16 +133,16 @@ if (isset($_POST['ingresar_cita'])){
             <div class="especialidad_medico">
                 <p>Médico:</p>
                 <select id = "doctor" name = "doctor" method = "post" name="Especialidades" class="selec_especialidad">
-                    <option value = "40">Jean Alvarez (Cardiología)</option> 
-                    <option value = "41">Gaspar Campos (Cardiología)</option> 
-                    <option value = "42">Rodrigo Moran (Oftalmología)</option>
-                    <option value = "43">Nathalie Ng (Oftalmología)</option> 
-                    <option value = "44">Valentina Aizpurua (Infectología)</option>  
-                    <option value = "45">Daniela Cantres (Infectología)</option> 
-                    <option value = "46">Alonso Plato (Neuropsicologiía)</option> 
-                    <option value = "47">Andres Urieta (Neuropsicologiía)</option>
-                    <option value = "48">Mike Chang (Pediatría)</option> 
-                    <option value = "49">Fherney Pardo (Pediatría)</option>  
+                    <option value = "50">Javier Torre (Cardiología)</option> 
+                    <option value = "21">Juan Jacome (Cardiología)</option> 
+                    <option value = "22">Roberto Lambraño (Oftalmología)</option>
+                    <option value = "23">Eduardo Dominguez (Oftalmología)</option> 
+                    <option value = "24">Eric Guevara (Infectología)</option>  
+                    <option value = "25">Harmodio Cedeño (Infectología)</option> 
+                    <option value = "26">Alison Len (Neuropsicologiía)</option> 
+                    <option value = "27">Mario Montenegro (Neuropsicologiía)</option>
+                    <option value = "28">Ricardo Rivera (Pediatría)</option> 
+                    <option value = "29">Lacre Atura (Pediatría)</option>  
                  </select>
             </div>
         </section>
@@ -174,7 +174,7 @@ if (isset($_POST['ingresar_cita'])){
         
         <section>
             <div class="ir_atras">
-                <a href="Escoger_Centro_Hospitalario.php"><img class="botonatras" src="icono_salir.png" alt=""></a>
+            <a href="Escoger_Centro_Hospitalario.php"><img class="botonatras" src="icono_salir.png" alt=""></a>
                 <p class="texto_salir">Salir</p>
             </div>
         </section>
@@ -183,8 +183,3 @@ if (isset($_POST['ingresar_cita'])){
         
         
     </main>
-
-
-
-</body>
-</html>

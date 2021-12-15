@@ -109,7 +109,6 @@ nav ul{
 .mas-detalles2{
     background-color: rgb(188, 189, 192); 
     box-shadow: 0 0 20px 0 rgba(39, 38, 38, 0.281), 0 5px 5px 0 rgba(0, 0, 0, 0.377);
-    padding-bottom: 40px;
 }
 
 .mas-detalles2 h2, .mas-detalles2 p {
@@ -164,7 +163,7 @@ main h2{
     display: inline-flex;
     margin-bottom: 0px;
     position: relative;
-    top: -600px;
+    top: -425px;
 }
 
 .menu_sistema {
@@ -227,9 +226,9 @@ label {
     float: left;
     padding: 20px;
     color: white;
-    width: 16%;
+    width: 27%;
     position: relative;
-    top: -166px;
+    top: -95px;
     left: 690px;
     font-size: medium;
 }
@@ -241,10 +240,13 @@ label {
 
 .btn_1{
     display: block;
-    width: 96px;
-    height: 42px;
-    border-radius: 6%;
+    width: 150px;
+    height: 65px;
+    border-radius: 4%;
     border-color: white;
+    position: relative;
+    top: 16px;
+    background-color: lightblue;
 }
 
 .btn_1_1{
@@ -259,13 +261,14 @@ label {
 
 .btn_2{
     display: block;
-    width: 96px;
-    height: 42px;
-    border-radius: 6%;
+    width: 150px;
+    height: 65px;
+    border-radius: 4%;
     border-color: white;
     position: relative;
     top: -49px;
-    left: 111px;
+    left: 190px;
+    background-color: lightcoral;
 }
 
 .btn_2_1{
@@ -275,19 +278,20 @@ label {
     border-radius: 6%;
     border-color: white;
     position: relative;
-    top: -406px;
-    left: 111px;
+    top: -49px;
+    left: 230px;
 }
 
 .btn_3{
     display: block;
-    width: 96px;
-    height: 42px;
-    border-radius: 6%;
+    width: 150px;
+    height: 65px;
+    border-radius: 4%;
     border-color: white;
     position: relative;
-    top: -98px;
-    left: 219px;
+    top: -114px;
+    left: 382px;
+    background-color: lightgreen;
 }
 
 .btn_3_1{
@@ -303,13 +307,13 @@ label {
 
 .btn_4{
     display: block;
-    width: 96px;
-    height: 42px;
-    border-radius: 6%;
+    width: 150px;
+    height: 65px;
+    border-radius: 4%;
     border-color: white;
     position: relative;
-    top: -147px;
-    left: 327px;
+    top: -85px;
+    background-color: lightsalmon;
 }
 
 .btn_4_1{
@@ -325,13 +329,14 @@ label {
 
 .btn_5{
     display: block;
-    width: 96px;
-    height: 42px;
-    border-radius: 6%;
+    width: 150px;
+    height: 65px;
+    border-radius: 4%;
     border-color: white;
     position: relative;
-    top: -196px;
-    left: 435px;
+    top: -150px;
+    left: 190px;
+    background-color: lightyellow;
 }
 
 .btn_5_1{
@@ -483,7 +488,7 @@ label {
     color: white;
     width: 16%;
     position: relative;
-    top: -100px;
+    top: -146px;
     left: 693px;
     font-size: medium;
 }
@@ -495,7 +500,7 @@ label {
     border-radius: 4%;
     border-color: white;
     position: relative;
-    top: -34px;
+    top: -10px;
     left: 0px;
     text-decoration: underline;
 }

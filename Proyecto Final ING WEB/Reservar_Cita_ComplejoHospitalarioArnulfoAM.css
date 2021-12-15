@@ -97,7 +97,7 @@ nav ul{
     align-self: center;
     align-items: center;
     position: relative;
-    top: -560px;
+    top: -918px;
 }
 
 .mas-detalles{
@@ -109,7 +109,6 @@ nav ul{
 .mas-detalles2{
     background-color: rgb(188, 189, 192); 
     box-shadow: 0 0 20px 0 rgba(39, 38, 38, 0.281), 0 5px 5px 0 rgba(0, 0, 0, 0.377);
-    padding-bottom: 40px;
 }
 
 .mas-detalles2 h2, .mas-detalles2 p {
@@ -164,7 +163,7 @@ main h2{
     display: inline-flex;
     margin-bottom: 0px;
     position: relative;
-    top: -600px;
+    top: -716px;
 }
 
 .menu_sistema {
@@ -483,7 +482,7 @@ label {
     color: white;
     width: 16%;
     position: relative;
-    top: -100px;
+    top: -180px;
     left: 693px;
     font-size: medium;
 }

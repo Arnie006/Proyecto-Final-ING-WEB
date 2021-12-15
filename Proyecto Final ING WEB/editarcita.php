@@ -10,9 +10,10 @@ if (!isset($_SESSION['nombre_user']))
 }
 $success = "";
 $fecha ="";
-$doctor = "";
+$doctor = $_SESSION['id_medico'];
 $hora = "";
 $error = "";
+$modcita = $_SESSION['id_citas'];
 $id = $_SESSION['row']['id_users'];
 $correo = $_SESSION['correo_user']['correo'];
 
@@ -29,7 +30,7 @@ if (isset($_POST['ingresar_cita'])){
     if ($cita['fecha'] === $date){
         $error = "El doctor ya tiene una cita para el horario seleccionado";
     }else{
-        $addcita_sql = "insert into prueba_citas (fecha, id_paciente, correo_paciente, id_medico) values ('$date', '$id', '$correo', '$doctor');"; 
+        $addcita_sql = "UPDATE prueba_citas set fecha = $date where id_citas =".$modcita; 
         $query = mysqli_query($link, $addcita_sql);
 
         //TODO añadir esta variable a la pantalla principal
@@ -53,7 +54,7 @@ if (isset($_POST['ingresar_cita'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservar Citas</title>
 
-    <link rel="stylesheet" href="Reservar_Cita_ComplejoHospitalarioArnulfoAM.css">
+    <link rel="stylesheet" href="Descripcioncss.css">
     <link rel="shortcut icon" href="logo_css.png" type="image/x-icon">
 </head>
 
@@ -75,6 +76,7 @@ if (isset($_POST['ingresar_cita'])){
     </header>
 
     <main>
+        <?php echo $modcita;?>
         <section class="cuerpo">
             <div class="mas-detalles">
                 <img class="user_info" src="usuario.png" alt="">
@@ -82,7 +84,7 @@ if (isset($_POST['ingresar_cita'])){
             </div>
         </section>
         <section class="menu_sistema">
-        <div class="div_menu_sistema">
+            <div class="div_menu_sistema">
                 <h3><a class="btn_reservarcitahover" href="Escoger_Centro_Hospitalario.php"><font color="#3498DB">Reservar Citas</font></a></h3>
                 <h3><a class="btn_reservarcitahover" href="citasrecientes.php">Citas Recientes</a></h3>
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
@@ -90,17 +92,17 @@ if (isset($_POST['ingresar_cita'])){
         </section>
         <section class="nombre_hospital_sistema">
             <div class="nombre_hospital">
-                <h3>Complejo Hospitalario Arnulfo Arias Madrid</h3>
+                <h3>Editar Cita Seleccionada</h3>
             </div>
         </section>
-        <?php echo $doctor?>
-    <form method = "post" action="Reservar_Cita_ComplejoHospitalarioArnulfoAM.php">
+    <form method = "post" action="editarcita.php">
         <section class="menu_fecha_sistema">
             <div class="menu_fecha">
+                <?php echo $error;?>
                 <label for="fecha">Fecha:</label>
                 <input type="date" id="fecha" name="fecha"
                     value="<?php echo $fecha; ?>"
-                    min="2021-08-12" max="2022-08-12">
+                    min="2021-08-12" max="2022-08-12" required>
             </div>
         </section>
         <section class="hora_cita_sistema">
@@ -127,29 +129,6 @@ if (isset($_POST['ingresar_cita'])){
                     <option value = " 16:30:00">16:30 - 17:00</option> 
                     <option value = " 17:00:00">17:00 - 17:30</option> 
                 </select>
-            </div>
-        </section>
-        <section class="especialidad_medico_sistema">
-            <div class="especialidad_medico">
-                <p>Médico:</p>
-                <select id = "doctor" name = "doctor" method = "post" name="Especialidades" class="selec_especialidad">
-                    <option value = "40">Jean Alvarez (Cardiología)</option> 
-                    <option value = "41">Gaspar Campos (Cardiología)</option> 
-                    <option value = "42">Rodrigo Moran (Oftalmología)</option>
-                    <option value = "43">Nathalie Ng (Oftalmología)</option> 
-                    <option value = "44">Valentina Aizpurua (Infectología)</option>  
-                    <option value = "45">Daniela Cantres (Infectología)</option> 
-                    <option value = "46">Alonso Plato (Neuropsicologiía)</option> 
-                    <option value = "47">Andres Urieta (Neuropsicologiía)</option>
-                    <option value = "48">Mike Chang (Pediatría)</option> 
-                    <option value = "49">Fherney Pardo (Pediatría)</option>  
-                 </select>
-            </div>
-        </section>
-        <section class="motivo_cita_sistema">
-            <div class="motivo_cita">
-                    <label for="motivocita">Motivo de la Cita:</label><br>
-                    <input type="text" id="motcita" name="motcita" class="modifmotcita" required>
             </div>
         </section>
         <section class="boton_enviar_sistema">

@@ -53,7 +53,7 @@ if (isset($_POST['ingresar_cita'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservar Citas</title>
 
-    <link rel="stylesheet" href="Reservar_Cita_ComplejoHospitalarioArnulfoAM.css">
+    <link rel="stylesheet" href="Descripcioncss.css">
     <link rel="shortcut icon" href="logo_css.png" type="image/x-icon">
 </head>
 
@@ -82,7 +82,7 @@ if (isset($_POST['ingresar_cita'])){
             </div>
         </section>
         <section class="menu_sistema">
-        <div class="div_menu_sistema">
+            <div class="div_menu_sistema">
                 <h3><a class="btn_reservarcitahover" href="Escoger_Centro_Hospitalario.php"><font color="#3498DB">Reservar Citas</font></a></h3>
                 <h3><a class="btn_reservarcitahover" href="citasrecientes.php">Citas Recientes</a></h3>
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
@@ -90,17 +90,17 @@ if (isset($_POST['ingresar_cita'])){
         </section>
         <section class="nombre_hospital_sistema">
             <div class="nombre_hospital">
-                <h3>Complejo Hospitalario Arnulfo Arias Madrid</h3>
+                <h3>Policlínica J.J. Vallarino</h3>
             </div>
         </section>
-        <?php echo $doctor?>
-    <form method = "post" action="Reservar_Cita_ComplejoHospitalarioArnulfoAM.php">
+    <form method = "post" action="Reservar_Cita_PoliclinicaJJVallarino.php">
         <section class="menu_fecha_sistema">
             <div class="menu_fecha">
+                <?php echo $error;?>
                 <label for="fecha">Fecha:</label>
                 <input type="date" id="fecha" name="fecha"
                     value="<?php echo $fecha; ?>"
-                    min="2021-08-12" max="2022-08-12">
+                    min="2021-08-12" max="2022-08-12" required>
             </div>
         </section>
         <section class="hora_cita_sistema">
@@ -133,16 +133,16 @@ if (isset($_POST['ingresar_cita'])){
             <div class="especialidad_medico">
                 <p>Médico:</p>
                 <select id = "doctor" name = "doctor" method = "post" name="Especialidades" class="selec_especialidad">
-                    <option value = "40">Jean Alvarez (Cardiología)</option> 
-                    <option value = "41">Gaspar Campos (Cardiología)</option> 
-                    <option value = "42">Rodrigo Moran (Oftalmología)</option>
-                    <option value = "43">Nathalie Ng (Oftalmología)</option> 
-                    <option value = "44">Valentina Aizpurua (Infectología)</option>  
-                    <option value = "45">Daniela Cantres (Infectología)</option> 
-                    <option value = "46">Alonso Plato (Neuropsicologiía)</option> 
-                    <option value = "47">Andres Urieta (Neuropsicologiía)</option>
-                    <option value = "48">Mike Chang (Pediatría)</option> 
-                    <option value = "49">Fherney Pardo (Pediatría)</option>  
+                    <option value = "1">Juan Barrios (Cardiología)</option> 
+                    <option value = "2">Luis Alberto (Cardiología)</option> 
+                    <option value = "3">Muricio González (Oftalmología)</option>
+                    <option value = "4">Gustavo Espinosa (Oftalmología)</option> 
+                    <option value = "5">Diego Montenegro (Infectología)</option>  
+                    <option value = "6">Alejandro Espino (Infectología)</option> 
+                    <option value = "7">Paolo Marine (Neuropsicologiía)</option> 
+                    <option value = "8">Rolando Chanis (Neuropsicologiía)</option>
+                    <option value = "9">Juan Alcedo (Pediatría)</option> 
+                    <option value = "10">Tomas Fraser (Pediatría)</option>  
                  </select>
             </div>
         </section>
@@ -169,6 +169,9 @@ if (isset($_POST['ingresar_cita'])){
                 <p>Teléfono:</p>
                 <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
                 <hr>
+            </div>
+            <div>
+                <u><p class="btn_letra_ver_perfil">Ver perfil completo</p></u>
             </div>
         </section>
         

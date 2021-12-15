@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Cita</title>
+    <title>Citas Recientes</title>
 
-    <link rel="stylesheet" href="Inicio_Doctor.css">
+    <link rel="stylesheet" href="Citas_Recientes_Medico.css">
     <link rel="shortcut icon" href="logo_css.png" type="image/x-icon">
 </head>
 
@@ -22,7 +22,7 @@
             </div>
             <ul>
                 <h1 class="det">Sistema Electrónico de Citas</h1>
-                <a href="LoginorSignin.html"><img class="user" src="usuario.png" alt=""></a>
+                <a href="#"><img class="user" src="usuario.png" alt=""></a>
             </ul>
         </nav>
     </header>
@@ -36,30 +36,16 @@
         </section>
         <section class="menu_sistema">
             <div class="div_menu_sistema">
-                <h3><a class="btn_reservarcitahover" href="">Citas Recientes</a></h3>
+                <h3><a class="btn_reservarcitahover" href="#">Reservar Citas</a></h3>
+                <h3><a class="btn_reservarcitahover" href="citasrecientes.php"><font color="#2ECC71">Citas Recientes</font></a></h3>
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
             </div>
         </section>
-        <section class="nombre_hospital_sistema">
-            <div class="nombre_hospital">
-                <h3>Ver Citas Recientes</h3>
-            </div>
-        </section>
-    <form method = "post" action="Inicio_Doctor.php">
+        <?php echo $doctor?>
+    <form method = "post" action="Reservar_Cita_PoliclinicaJJBallarino.php">
         
-        <section class="menu_fecha_sistema">
-            <div class="menu_fecha">
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha"
-                    value="<?php echo $fecha; ?>"
-                    min="2021-08-12" max="2022-08-12">
-            </div>
-        </section>
-        
-        
+    
     </form>
-
-
         <section class="cuerpo2">
             <div class="mas-detalles2">
                 <p>No. de Seguro Social:</p>
@@ -74,17 +60,37 @@
             </div>
         </section>
 
+        <section class="cuerpo3">
+            <div class="mas-detalles3">
+                <hr>
+                <p>Centro Médico:</p>
+                <p><?php echo $_SESSION['cedula'];?></p>
+                <hr>
+                <p>Fecha:</p>
+                <p><?php echo implode(', ', $_SESSION['correo_user']);?></p>
+                <hr>
+                <p>Hora de Atención:</p>
+                <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
+                <hr>
+                <p>Médico:</p>
+                <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
+                <hr>
+                <p>Motivo de Cita:</p>
+                <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
+                <hr>
+            </div>
+        </section>
+
+
         
         <section>
             <div class="ir_atras">
-                <a href='logout.php'><img class="botonatras" src="icono_salir.png" alt=""></a>
+                <a href="logout.php" ><img class="botonatras" src="icono_salir.png" alt=""></a>
                 <p class="texto_salir">Salir</p>
             </div>
-            <div class="boton_enviar">
-                <button name="subject" type="submit" value="HTML" class="btn_enviar">Enviar</button>
-            </div>
-            <div class="boton_ver">
-                <button name="boton" type="submit" value="HTML" class="btn_ver">Ver Citas</button>
+            <div class="boton_editar">
+                <a href=""><p class="edit">Editar</p></a>
+                <a href=""><p class="delet">Eliminar</p></a>
             </div>
         </section>
         

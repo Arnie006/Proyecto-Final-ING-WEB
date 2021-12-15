@@ -1,3 +1,16 @@
+<?php
+session_start();
+include "config.php";
+if (!isset($_SESSION['nombre_user']))
+{                     
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +44,7 @@
         <section class="cuerpo">
             <div class="mas-detalles">
                 <img class="user_info" src="usuario.png" alt="">
-                <h2>Buen dia, <?php echo implode(', ', $_SESSION['nombre_user']); echo ' '; echo implode(', ', $_SESSION['apellido_user']); ?></h2>
+                <h2>Buen dia, <?php echo implode(', ', $_SESSION['nombre_user']); ?></h2>
             </div>
         </section>
         <section class="menu_sistema">
@@ -45,7 +58,7 @@
                 <h3>Ver Citas Recientes</h3>
             </div>
         </section>
-    <form method = "post" action="Inicio_Doctor.php">
+    <form method = "post" action="Reservar_Cita_PoliclinicaJJVallarino.php">
         
         <section class="menu_fecha_sistema">
             <div class="menu_fecha">
@@ -60,31 +73,20 @@
     </form>
 
 
-        <section class="cuerpo2">
-            <div class="mas-detalles2">
-                <p>No. de Seguro Social:</p>
-                <p><?php echo $_SESSION['cedula'];?></p>
-                <hr>
-                <p>Correo Electrónico:</p>
-                <p><?php echo implode(', ', $_SESSION['correo_user']);?></p>
-                <hr>
-                <p>Teléfono:</p>
-                <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
-                <hr>
-            </div>
-        </section>
+
+
 
         
-        <section>
+        <section >
             <div class="ir_atras">
-                <a href='logout.php'><img class="botonatras" src="icono_salir.png" alt=""></a>
+            <a href='logout.php'> <img class="botonatras" src="icono_salir.png" alt=""></a>
                 <p class="texto_salir">Salir</p>
             </div>
             <div class="boton_enviar">
-                <button name="subject" type="submit" value="HTML" class="btn_enviar">Enviar</button>
+            <input type= "submit" name="ingresar_cita"  class="btn_enviar">
             </div>
             <div class="boton_ver">
-                <button name="boton" type="submit" value="HTML" class="btn_ver">Ver Citas</button>
+                <input type= "submit" name="ver_todo"  class="btn_ver">
             </div>
         </section>
         

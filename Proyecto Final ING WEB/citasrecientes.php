@@ -4,7 +4,7 @@ session_start();
 
 
 //revisa si la sesion esta iniciada y evita que el usuario acceda a las paginas escribiendo el nombre del archivo en la barra
-if (!isset($_SESSION['nombre_user']))
+if (isset($_SESSION['username']))
 {                     
     session_unset();
     session_destroy();
@@ -18,11 +18,7 @@ $sql_show = "select * from (select prueba_citas.id_citas, prueba_citas.fecha, pr
 '$usuario' order by fecha ASC";
 $mostrar_citas = mysqli_query($link, $sql_show);
 $row = mysqli_fetch_array($mostrar_citas);
-
-
-$_SESSION['id_medico'] = $row['id'] ?? "";
-$_SESSION['fecha_editar'] = $row['fecha'] ?? "";
-
+$_SESSION['id_medico'] = $row['id'];
 
 //query para eliminar toda la informacion de la tabla
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE' || ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['_METHOD'] == 'DELETE')) {
@@ -34,15 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE' || ($_SERVER['REQUEST_METHOD'] == 'PO
         exit;
     }
 }
-
-if ($_SERVER['REQUEST_METHOD'] == 'EDIT' || ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['editar'] == 'EDIT')){
-    $id_editar = (int) $_POST['id_editar'];
-    $_SESSION['id_cita_editar'] = $id_editar ?? "";
-    header('Location: editarcita.php');
+if (isset($_POST['id_editar'])){
+    $_SESSION['id_citas'] = $_POST['id_editar'];
 
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -88,6 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'EDIT' || ($_SERVER['REQUEST_METHOD'] == 'POST
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
             </div>
         </section>
+    <form method = "post" action="Reservar_Cita_PoliclinicaJJVallarino.php">
+        
+        
+        <section class="boton_enviar_sistema">
+            
+        </section>
+    </form>
+
 
         <section class="cuerpo2">
             <div class="mas-detalles2">
@@ -128,8 +127,7 @@ while($row = mysqli_fetch_array($mostrar_citas)){
                 <p><?php echo $row['motivo'];?></p>
                 <hr>
                 
-                <form method="post">
-                <input type="hidden" name="editar" value="EDIT">
+                <form action = 'editarcita.php'>
                 <input type="hidden" name="id_editar" value="<?php echo $row['id_citas']; ?>">
                 <button class="edit" type="submit">Editar</button>      
                 </form>
@@ -138,14 +136,14 @@ while($row = mysqli_fetch_array($mostrar_citas)){
                 <input type="hidden" name="_METHOD" value="DELETE">
                 <input type="hidden" name="id" value="<?php echo $row['id_citas']; ?>">
                 <button class="delet" type="submit">Borrar</button>
-                </form>
+
                 <hr>
             
             </div>
 
         </section>
 
-        
+        </form>
         <?php
         
     }
