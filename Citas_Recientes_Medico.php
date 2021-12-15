@@ -1,3 +1,30 @@
+<?php 
+include "config.php";
+session_start()?>
+<?php
+if (isset($_SESSION['username']))
+{                     
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
+
+$id = $_SESSION['row']['id'];
+$fecha = $_SESSION['fecha'];
+
+function VerificarPorDia(){
+
+    
+
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,12 +58,11 @@
         <section class="cuerpo">
             <div class="mas-detalles">
                 <img class="user_info" src="usuario.png" alt="">
-                <h2>Buen dia, <?php echo implode(', ', $_SESSION['nombre_user']); echo ' '; echo implode(', ', $_SESSION['apellido_user']); ?></h2>
+                <h2>Buen dia, <?php echo implode(', ', $_SESSION['nombre_user']);?></h2>
             </div>
         </section>
         <section class="menu_sistema">
             <div class="div_menu_sistema">
-                <h3><a class="btn_reservarcitahover" href="#">Reservar Citas</a></h3>
                 <h3><a class="btn_reservarcitahover" href="citasrecientes.php"><font color="#2ECC71">Citas Recientes</font></a></h3>
                 <h3><a class="btn_reservarcitahover" href="pfcontacto.php">Contáctenos</a></h3>
             </div>
@@ -49,13 +75,13 @@
         <section class="cuerpo2">
             <div class="mas-detalles2">
                 <p>No. de Seguro Social:</p>
-                <p><?php echo $_SESSION['cedula'];?></p>
+                <p><?php //echo $_SESSION['cedula'];?></p>
                 <hr>
                 <p>Correo Electrónico:</p>
-                <p><?php echo implode(', ', $_SESSION['correo_user']);?></p>
+                <p><?php// echo implode(', ', $_SESSION['correo_user']);?></p>
                 <hr>
                 <p>Teléfono:</p>
-                <p><?php echo implode(', ', $_SESSION['telefono_user']);?></p>
+                <p><?php //echo implode(', ', $_SESSION['telefono_user']);?></p>
                 <hr>
             </div>
         </section>
